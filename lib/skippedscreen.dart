@@ -1,3 +1,4 @@
+import 'package:bookmyveg/BNB.dart';
 import 'package:flutter/material.dart';
 
 class Sscreen extends StatefulWidget {
@@ -10,6 +11,9 @@ class Sscreen extends StatefulWidget {
 class _SscreenState extends State<Sscreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      bottomNavigationBar: const BNB(),
+      body: Center(),
+    );
   }
 }
