@@ -1,5 +1,6 @@
 import 'package:bookmyveg/BNB.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/LNavBar.dart';
+import 'package:flutter/materialar.dart';
 
 class Sscreen extends StatefulWidget {
   const Sscreen({Key? key}) : super(key: key);
@@ -13,6 +14,17 @@ class _SscreenState extends State<Sscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: const BNB(),
+      drawer: LNa,
+      appBar: AppBar(
+        bottomOpacity: 500,
+        backgroundColor: const Color.fromRGBO(234, 235, 209, 100),
+        title: const Text("Book My Veg",
+            style: TextStyle(color: const Color.fromRGBO(13, 126, 16, 100))),
+        iconTheme: const IconThemeData(color: Colors.deepOrange),
+        actions: const [
+          IconButton(onPressed: null, icon: Icon(Icons.search, size: 30)),
+        ],
+      ),
       body: Center(),
     );
   }
