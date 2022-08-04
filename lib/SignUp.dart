@@ -1,4 +1,5 @@
 import 'package:bookmyveg/login_page.dart';
+import 'package:bookmyveg/skippedscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -276,7 +277,8 @@ class _signupState extends State<signup> {
                   children: [
                     TextButton(
                       onPressed: () {
-                        signup();
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => Sscreen()));
                       },
                       child: Text(
                         "Skip >",

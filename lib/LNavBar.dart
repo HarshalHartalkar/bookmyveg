@@ -3,11 +3,6 @@ import 'package:boxicons/boxicons.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:iconify_flutter/icons/ant_design.dart';
-import 'package:iconify_flutter/icons/ion.dart';
-
-//import 'package:iconify_flutter/icons/gridiconsebsymbol.dart';
 
 class lnavbar extends StatelessWidget {
   const lnavbar({Key? key}) : super(key: key);
@@ -21,8 +16,11 @@ class lnavbar extends StatelessWidget {
         children: [
           // Color.fromRGBO(234, 235, 209, 0.90),
           UserAccountsDrawerHeader(
-            accountName: Text('User'),
-            accountEmail: Text('User@gmail.com'),
+            accountName: Text(''),
+            accountEmail: Text(
+              'Welcome User !',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.network(
@@ -55,7 +53,7 @@ class lnavbar extends StatelessWidget {
                     IconButton(
                       onPressed: null,
                       icon: Icon(
-                        Icons.format_list_bulleted,
+                        Icons.view_list_rounded,
                         color: Colors.white,
                       ),
                     ),
@@ -71,7 +69,7 @@ class lnavbar extends StatelessWidget {
                     IconButton(
                       onPressed: null,
                       icon: Icon(
-                        Icons.shopping_cart,
+                        Icons.shopping_cart_sharp,
                         color: Colors.white,
                       ),
                     ),
@@ -94,10 +92,14 @@ class lnavbar extends StatelessWidget {
           //   ),
           // ),
 
-          const ListTile(
-            leading: Icon(Boxicons.bxs_user_detail),
-            title: Text('My Profile'),
-            //onTap: () => null,
+          ListTile(
+            leading: Icon(Icons.home_rounded),
+            title: Text('Login/SignUp'),
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => login(),
+              ),
+            ),
           ),
           const ListTile(
             leading: Icon(CupertinoIcons.person_alt),
@@ -106,16 +108,21 @@ class lnavbar extends StatelessWidget {
           ),
           const ListTile(
             leading: Icon(CupertinoIcons.doc_checkmark),
+            title: Text('Terms & Privacy'),
+            //onTap: () => null,
+          ),
+          const ListTile(
+            leading: Icon(Icons.privacy_tip_outlined),
             title: Text('Privacy Policy'),
             //onTap: () => null,
           ),
           const ListTile(
-            leading: Iconify(Ion.arrow_return_left),
+            leading: Icon(Icons.cached_sharp),
             title: Text('Return Refund'),
             //onTap: () => null,
           ),
           const ListTile(
-            leading: Icon(Icons.rate_review_outlined),
+            leading: Icon(Icons.message_outlined),
             title: Text('Review Us'),
             //onTap: () => null,
           ),
@@ -123,15 +130,6 @@ class lnavbar extends StatelessWidget {
             leading: Icon(FluentIcons.share_24_filled),
             title: Text('Share with Friends'),
             //onTap: () => null,
-          ),
-          ListTile(
-            leading: Iconify(AntDesign.logout_outlined),
-            title: Text('Logout'),
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => login(),
-              ),
-            ),
           ),
           const ListTile(
             leading: Icon(Boxicons.bx_copyright),

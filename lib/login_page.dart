@@ -1,5 +1,9 @@
 import 'package:bookmyveg/SignUp.dart';
+import 'package:bookmyveg/main.dart';
+import 'package:bookmyveg/skippedscreen.dart';
 import 'package:flutter/material.dart';
+
+import 'SignUp.dart';
 
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -135,7 +139,8 @@ class _loginState extends State<login> {
                     elevation: 4,
                     child: TextButton(
                       onPressed: () {
-                        print("Hello");
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MyHomePage()));
                       },
                       child: Text(
                         'Sign In',
@@ -191,7 +196,10 @@ class _loginState extends State<login> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Sscreen()));
+                  },
                   child: Text(
                     "Skip >",
                     style: TextStyle(
