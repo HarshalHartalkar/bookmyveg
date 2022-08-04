@@ -175,7 +175,8 @@ class _loginState extends State<login> {
                   children: [
                     TextButton(
                       onPressed: () {
-                        signup();
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => signup()));
                       },
                       child: Text(
                         "New User? Please SignUp",
@@ -192,7 +193,7 @@ class _loginState extends State<login> {
                 TextButton(
                   onPressed: () {},
                   child: Text(
-                    "Skip>",
+                    "Skip >",
                     style: TextStyle(
                       color: Colors.green,
                       fontSize: 15,

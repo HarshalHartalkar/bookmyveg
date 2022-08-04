@@ -1,6 +1,5 @@
 import 'package:bookmyveg/BNB.dart';
 import 'package:bookmyveg/NavBar.dart';
-import 'package:bookmyveg/SignUp.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,9 +15,9 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: Color.fromRGBO(234, 235, 209, 0.90),
       ),
+      home: MyHomePage(),
       //home: login(),
-      //home: login(),
-      home: signup(),
+      //home: signup(),
     );
   }
 }

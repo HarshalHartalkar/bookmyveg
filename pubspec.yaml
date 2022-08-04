@@ -40,6 +40,7 @@ dependencies:
   fluentui_system_icons: ^1.1.170
   iconforest_icon_park: ^1.0.0+1
   icofont_flutter: ^1.4.0
+  intl: ^0.17.0
 
 
 

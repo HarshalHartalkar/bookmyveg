@@ -1,4 +1,6 @@
+import 'package:bookmyveg/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class signup extends StatefulWidget {
   const signup({Key? key}) : super(key: key);
@@ -10,6 +12,9 @@ class signup extends StatefulWidget {
 }
 
 class _signupState extends State<signup> {
+  TextEditingController _date = TextEditingController();
+  bool isObsecure = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,11 +25,11 @@ class _signupState extends State<signup> {
               // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
-                  height: 20,
+                  height: 35,
                   width: 1,
                 ),
                 CircleAvatar(
-                    radius: 50,
+                    radius: 55,
                     backgroundColor: Color.fromRGBO(234, 235, 209, 0),
                     backgroundImage: AssetImage('assets/images/logo.png')),
                 SizedBox(
@@ -48,16 +53,16 @@ class _signupState extends State<signup> {
                   //height: ,
                   width: 350,
                   child: Text(
-                    'Please enters',
+                    'Please enter your credentials',
                     style: TextStyle(
                       color: Colors.green,
-                      fontSize: 15,
+                      fontSize: 16,
                     ),
                     textAlign: TextAlign.start,
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 20),
+                  margin: EdgeInsets.symmetric(vertical: 10),
                   //padding: EdgeInsets.symmetric(horizontal: 28, vertical: 5),
                   width: 360,
                   height: 50,
@@ -66,10 +71,10 @@ class _signupState extends State<signup> {
                     shadowColor: Colors.black,
                     elevation: 4,
                     child: TextField(
-                      keyboardType: TextInputType.phone,
+                      keyboardType: TextInputType.name,
                       //textAlign: TextAlign.start,
                       decoration: InputDecoration(
-                        hintText: "Enter Mobile Number",
+                        hintText: "Enter Name",
                         prefixIcon: Icon(
                           Icons.person,
                         ),
@@ -96,9 +101,9 @@ class _signupState extends State<signup> {
                       keyboardType: TextInputType.phone,
                       //textAlign: TextAlign.start,
                       decoration: InputDecoration(
-                        //hintText: "Enter Mobile Number",
+                        hintText: "Enter Mobile Number",
                         prefixIcon: Icon(
-                          Icons.key,
+                          Icons.phone_android_rounded,
                         ),
                         filled: true,
                         border: InputBorder.none, //  fillColor: Colors.pink,
@@ -111,7 +116,114 @@ class _signupState extends State<signup> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 25),
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  //padding: EdgeInsets.symmetric(horizontal: 28, vertical: 5),
+                  width: 360,
+                  height: 50,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(20),
+                    shadowColor: Colors.black,
+                    elevation: 4,
+                    child: TextField(
+                      controller: _date,
+                      keyboardType: TextInputType.datetime,
+                      //textAlign: TextAlign.start,
+                      decoration: InputDecoration(
+                        hintText: "Enter DOB (dd-MM-yyyy)",
+                        prefixIcon: Icon(
+                          Icons.calendar_month,
+                        ),
+                        filled: true,
+                        border: InputBorder.none, //  fillColor: Colors.pink,
+                      ),
+                      onTap: () async {
+                        DateTime? pickeddate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(1900),
+                            lastDate: DateTime(2101));
+
+                        if (pickeddate != null) {
+                          setState(() {
+                            _date.text =
+                                DateFormat('dd/MM/yyyy').format(pickeddate);
+                            //print(pickeddate);
+                          });
+                        }
+                      },
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                Container(
+                  //margin: EdgeInsets.symmetric(vertical: 0.),
+                  //padding: EdgeInsets.symmetric(horizontal: 28, vertical: 5),
+                  width: 360,
+                  height: 50,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(20),
+                    shadowColor: Colors.black,
+                    elevation: 4,
+                    child: TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      //textAlign: TextAlign.start,
+                      decoration: InputDecoration(
+                        hintText: "Enter Email ID",
+                        prefixIcon: Icon(
+                          Icons.mail,
+                        ),
+                        filled: true,
+                        border: InputBorder.none, //  fillColor: Colors.pink,
+                      ),
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  width: 360,
+                  height: 50,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(20),
+                    shadowColor: Colors.black,
+                    elevation: 4,
+                    child: TextField(
+                      obscureText: isObsecure,
+                      decoration: InputDecoration(
+                        //hintText: "Enter Mobile Number",
+                        prefixIcon: Icon(
+                          Icons.key,
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            isObsecure
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              isObsecure = !isObsecure;
+                            });
+                          },
+                        ),
+                        filled: true,
+                        border: InputBorder.none, //  fillColor: Colors.pink,
+                      ),
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 10),
                   //padding: EdgeInsets.symmetric(horizontal: 28, vertical: 5),
                   width: 360,
                   height: 50,
@@ -124,7 +236,7 @@ class _signupState extends State<signup> {
                         print("Hello");
                       },
                       child: Text(
-                        'Sign In',
+                        'SIGN UP',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -148,43 +260,31 @@ class _signupState extends State<signup> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => login()));
+                      },
                       child: Text(
-                        "Forgot Password?",
-                        style: TextStyle(color: Colors.green, fontSize: 15),
+                        "Already registered? Login",
+                        style: TextStyle(color: Colors.green, fontSize: 16),
                       ),
                     ),
                   ],
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TextButton(
                       onPressed: () {
                         signup();
                       },
                       child: Text(
-                        "New User? Please SignUp",
-                        style: TextStyle(color: Colors.green, fontSize: 15),
+                        "Skip >",
+                        style: TextStyle(color: Colors.green, fontSize: 17),
                       ),
                     ),
                   ],
                 )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Skip>",
-                    style: TextStyle(
-                      color: Colors.green,
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
               ],
             ),
           ],
