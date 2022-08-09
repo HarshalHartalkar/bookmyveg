@@ -41,6 +41,7 @@ dependencies:
   iconforest_icon_park: ^1.0.0+1
   icofont_flutter: ^1.4.0
   intl: ^0.17.0
+  fluttertoast: ^8.0.8
 
 
 

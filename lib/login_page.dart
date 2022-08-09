@@ -2,6 +2,7 @@ import 'package:bookmyveg/SignUp.dart';
 import 'package:bookmyveg/main.dart';
 import 'package:bookmyveg/skippedscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'SignUp.dart';
 
@@ -15,6 +16,7 @@ class login extends StatefulWidget {
 }
 
 class _loginState extends State<login> {
+  TextEditingController no = TextEditingController();
   bool _obtext = true;
 
   @override
@@ -73,6 +75,7 @@ class _loginState extends State<login> {
                     shadowColor: Colors.black,
                     elevation: 4,
                     child: TextField(
+                      controller: no,
                       keyboardType: TextInputType.phone,
                       //textAlign: TextAlign.start,
                       decoration: InputDecoration(
@@ -80,6 +83,7 @@ class _loginState extends State<login> {
                         prefixIcon: Icon(
                           Icons.person,
                         ),
+
                         filled: true,
                         border: InputBorder.none, //  fillColor: Colors.pink,
                       ),
@@ -111,6 +115,7 @@ class _loginState extends State<login> {
                         suffixIcon: IconButton(
                           icon: Icon(
                             _obtext ? Icons.visibility : Icons.visibility_off,
+                            color: Colors.green,
                           ),
                           onPressed: () {
                             setState(() {
@@ -139,8 +144,22 @@ class _loginState extends State<login> {
                     elevation: 4,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => MyHomePage()));
+                        if (no.text == "") {
+                          Fluttertoast.showToast(
+                            msg: "Mobile Number required!",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                          );
+                        } else if (no.text != "8208034519") {
+                          Fluttertoast.showToast(
+                            msg: "Valid Mobile Number required!",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                          );
+                        } else {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => MyHomePage()));
+                        }
                       },
                       child: Text(
                         'Sign In',

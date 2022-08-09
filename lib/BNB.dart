@@ -14,32 +14,40 @@ class _BNBState extends State<BNB> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: _currentState,
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.white,
+      selectedItemColor: Colors.deepOrange,
+      unselectedItemColor: Colors.black26,
       onTap: (index) => setState(() => _currentState = index),
-      items: const [
+      items: [
         BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
-            label: 'Home',
-            backgroundColor: Colors.blue),
+          icon: Icon(
+            Icons.home_outlined,
+          ),
+          label: 'Home',
+        ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.map_outlined),
+          icon: Icon(
+            Icons.map_outlined,
+          ),
           label: 'Map',
-          backgroundColor: Colors.blue,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.notifications),
+          icon: Icon(
+            Icons.notifications_none_outlined,
+          ),
           label: 'notifications',
-          backgroundColor: Colors.blue,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.call),
+          icon: Icon(
+            Icons.call,
+          ),
           label: 'Contact',
-          backgroundColor: Colors.blue,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_cart),
+          icon: Icon(
+            Icons.shopping_cart_outlined,
+          ),
           label: 'Cart',
-          backgroundColor: Colors.blue,
         ),
       ],
     );
